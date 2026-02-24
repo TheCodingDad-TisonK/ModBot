@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - FS25 ModBot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --light: #eaeaea;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+        }
+        
+        .sidebar {
+            background: var(--dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .guild-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--light);
+            display: block;
+        }
+        
+        .guild-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+        
+        .guild-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+        
+        .nav-link {
+            color: var(--light);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(46, 204, 113, 0.2);
+            color: var(--primary);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #27ae60;
+        }
+        
+        .alert-admin {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 sidebar">
+                <h4 class="mb-4">
+                    <i class="fas fa-robot me-2"></i>FS25 ModBot
+                </h4>
+                <nav class="nav flex-column">
+                    <a class="nav-link" href="/dashboard">
+                        <i class="fas fa-home me-2"></i>Home
+                    </a>
+                </nav>
+                <hr>
+                <a class="nav-link" href="/logout">
+                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                </a>
+            </div>
+            <div class="col-md-10 p-4">
+                <h2 class="mb-4">Select a Server</h2>
+                <p class="text-muted mb-4">Choose a server to manage (Admin only)</p>
+                
+                <div class="alert alert-admin mb-4">
+                    <i class="fas fa-shield-alt me-2"></i>
+                    Only servers where you have <strong>Administrator</strong> permission are shown.
+                </div>
+                
+                <div class="row">
+                    <% if (guilds.length > 0) { %>
+                        <% guilds.forEach(guild => { %>
+                            <div class="col-md-4">
+                                <a href="/dashboard/<%= guild.id %>" class="guild-card">
+                                    <div class="d-flex align-items-center">
+                                        <% if (guild.icon) { %>
+                                            <img src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.png" 
+                                                 class="guild-icon me-3" alt="<%= guild.name %>">
+                                        <% } else { %>
+                                            <div class="guild-icon me-3 d-flex align-items-center justify-content-center bg-secondary">
+                                                <i class="fas fa-server"></i>
+                                            </div>
+                                        <% } %>
+                                        <div>
+                                            <h5 class="mb-0"><%= guild.name %></h5>
+                                            <small class="text-success">
+                                                <i class="fas fa-check-circle me-1"></i> Administrator
+                                            </small>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="col-12">
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                No servers found where you have Administrator permission. 
+                                Make sure the bot is in your servers and you have admin rights.
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

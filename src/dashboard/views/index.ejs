@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FS25 ModBot - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --light: #eaeaea;
+            --accent: #3498db;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #16213e 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero .highlight {
+            color: var(--primary);
+        }
+        
+        .feature-card {
+            background: var(--dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 25px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #27ae60;
+        }
+        
+        .stats {
+            background: var(--dark);
+            padding: 50px 0;
+        }
+        
+        .stat-item h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        footer {
+            background: var(--dark);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: var(--dark);">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-robot me-2"></i>FS25 ModBot
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#stats">Statistics</a>
+                    </li>
+                    <li class="nav-item">
+                        <% if (user) { %>
+                            <a class="btn btn-primary ms-2" href="/dashboard">Dashboard</a>
+                        <% } else { %>
+                            <a class="btn btn-primary ms-2" href="/login">Login</a>
+                        <% } %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>The Ultimate <span class="highlight">Discord Moderation Bot</span></h1>
+            <p class="lead mb-4">Designed specifically for the Farming Simulator 25 Modding Community</p>
+            <div>
+                <% if (user) { %>
+                    <a href="/dashboard" class="btn btn-primary btn-lg">Go to Dashboard</a>
+                <% } else { %>
+                    <a href="/login" class="btn btn-primary btn-lg">Login with Discord</a>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Powerful Features</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Advanced Moderation</h4>
+                        <p>Comprehensive moderation tools including kick, ban, mute, warn, and more with full logging.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>Auto-Moderation</h4>
+                        <p>Automatic detection and action against spam, profanity, links, and raid attempts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Leveling System</h4>
+                        <p>Engage your community with XP, levels, role rewards, and leaderboards.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h4>Web Dashboard</h4>
+                        <p>Full admin panel with easy server management through our web interface.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <h4>Welcome/Leave Messages</h4>
+                        <p>Customizable welcome and leave messages for new members.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>Easy Configuration</h4>
+                        <p>Configure all bot settings via commands or the web dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats">
+        <div class="container">
+            <h2 class="text-center mb-5">Bot Statistics</h2>
+            <div class="row text-center">
+                <div class="col-md-4 stat-item">
+                    <h2><%= bot.guilds.cache.size %></h2>
+                    <p>Servers</p>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <h2><%= bot.users.cache.size %></h2>
+                    <p>Users</p>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <h2><%= bot.channels.cache.size %></h2>
+                    <p>Channels</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="mb-0">FS25 ModBot &copy; 2025 - Farming Simulator Modding Community</p>
+            <p class="text-muted small">Built with Discord.js</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
