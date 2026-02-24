@@ -3,7 +3,6 @@
   <img src="https://img.shields.io/github/v/release/TheCodingDad-TisonK/ModBot?color=2ecc71&include_prereleases&style=for-the-badge" alt="Release">
   <img src="https://img.shields.io/github/issues/TheCodingDad-TisonK/ModBot?color=2ecc71&style=for-the-badge" alt="Issues">
   <img src="https://img.shields.io/github/stars/TheCodingDad-TisonK/ModBot?color=2ecc71&style=for-the-badge" alt="Stars">
-  <img src="https://img.shields.io/discord/123456789?color=2ecc71&label=Discord&style=for-the-badge" alt="Discord">
 </p>
 
 ---
@@ -11,8 +10,6 @@
 # 🚜 FS25 ModBot
 
 A powerful, feature-rich Discord moderation bot designed specifically for the **Farming Simulator 25 Modding Community**. Built with Node.js and discord.js, utilizing modern slash commands for the best user experience.
-
-![Banner](https://via.placeholder.com/800x200/1a1a2e/2ecc71?text=FS25+ModBot)
 
 ---
 

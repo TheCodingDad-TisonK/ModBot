@@ -1,4 +1,4 @@
-# FS25 ModBot - Comprehensive Discord Moderation Bot
+t# FS25 ModBot - Comprehensive Discord Moderation Bot
 
 ## Project Overview
 
